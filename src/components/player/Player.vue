@@ -36,6 +36,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, onMounted, type PropType } from 'vue'
 import { Howl } from 'howler'
+import { TrackInfo } from '@/components/player/types/Track'
 import type { Track } from '@/components/player/types/Track'
 import { useArtistsStore } from '@/stores/artists'
 
@@ -102,7 +103,7 @@ export default defineComponent({
       currentTrack.value.howl ? (seek.value / currentTrack.value.howl.duration()) * 100 : 0,
     )
 
-    const getTrackInfo = computed(() => ({
+    const getTrackInfo = computed<TrackInfo>(() => ({
       artist: currentTrack.value.artist,
       title: currentTrack.value.title,
       seek: seek.value,
@@ -179,8 +180,7 @@ export default defineComponent({
 
       if (shuffle.value) {
         let newIndex = Math.floor(Math.random() * props.playlist.length)
-        while (newIndex === index.value)
-          newIndex = Math.floor(Math.random() * props.playlist.length)
+        while (newIndex === index.value) newIndex = Math.floor(Math.random() * props.playlist.length)
         index.value = newIndex
       } else {
         index.value =
