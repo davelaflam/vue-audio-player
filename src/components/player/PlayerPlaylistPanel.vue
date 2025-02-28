@@ -7,7 +7,7 @@
         v-show="track.display"
         :class="[{ selected: track === artistsStore.globalSelectedTrack }, { even: index % 2 === 0 }]"
         @click="selectTrack(track)"
-        @dblclick="playTrack(index)"
+        @dblclick.prevent
       >
         <v-list-item-title v-if="track" class="track-info">
           <span class="track-title"> {{ index + 1 }}. {{ track.title }} </span>
@@ -46,10 +46,6 @@ export default defineComponent({
       }
     }
 
-    const playTrack = (index: number) => {
-      emit('playtrack', index)
-    }
-
     const formatTime = (seconds: number) => {
       const minutes = Math.floor(seconds / 60)
       const remainingSeconds = Math.floor(seconds % 60)
@@ -61,7 +57,6 @@ export default defineComponent({
     return {
       artistsStore,
       selectTrack,
-      playTrack,
       formatTime,
     }
   },
