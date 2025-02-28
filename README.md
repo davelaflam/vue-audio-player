@@ -29,11 +29,10 @@
 ## 🚀 **Tech Stack**
 
 - **Vue 3** - Frontend framework
-- **Vuetify 3** - UI components and design system[README.md](../../github/interview-davelaflam-3906890f4eda44a28b029f3081bf0222/README.md)
+- **Vuetify 3** - UI components and design system
 - **TypeScript** - Static typing for maintainable code
 - **Howler.js** - Audio playback and management
 - **Pinia** - State management for Vue 3
-- **OpenAI Whisper API** - Voice recognition for hands-free control
 - **Vite** - Lightning-fast development and build tool
 
 ---
