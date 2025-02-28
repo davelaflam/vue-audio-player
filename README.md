@@ -22,8 +22,7 @@
 
 ## 📸 **Screenshots**
 
-![Music Player Screenshot](https://your-image-link.com/screenshot.png)
-![Playlist Screenshot](https://your-image-link.com/playlist.png)
+![Music Player Screenshot](./src/assets/images/vue-audio-player.png)
 
 ---
 
