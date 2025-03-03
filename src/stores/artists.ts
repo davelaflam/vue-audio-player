@@ -1,47 +1,10 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+import type { Track, ArtistState, Album, Artist } from '@/types'
 import MillerLaneAlbumCover from '@/assets/images/music/miller-lane--family-tree.jpg'
 
-export interface Track {
-  title: string
-  artist: string
-  howl: null | Howl
-  display: boolean
-}
-
-export interface Album {
-  title: string
-  year: string
-  cover: string
-  tracks: Track[]
-}
-
-export interface Artist {
-  id: number
-  artist: string
-  imageUrl: string
-  isActive: boolean
-  createdAt: string
-  createdBy: string
-  deletedAt: string | null
-  deletedBy: string | null
-  updatedAt: string
-  updatedBy: string | null
-  albums: Album[]
-  bandMembers: string[]
-  audioPath: string
-}
-
-interface ArtistState {
-  artists: Artist[]
-  artist?: Artist
-  errors: Record<string, string | null>
-  loading: Record<string, boolean>
-  globalSelectedTrack: Track | null
-}
-
-const millerLanePlayList = ref([
+const millerLanePlayList = ref<Track[]>([
   { title: 'Family Tree', artist: 'Miller Lane', howl: null, display: true },
   { title: 'Better Days', artist: 'Miller Lane', howl: null, display: true },
   { title: 'Collide', artist: 'Miller Lane', howl: null, display: true },
@@ -71,7 +34,7 @@ export const useArtistsStore = defineStore('artists', {
             cover: MillerLaneAlbumCover,
             tracks: millerLanePlayList.value,
           },
-        ],
+        ] as Album[],
         bandMembers: [
           'Stephan Roy - Vocals',
           'Brian Gunter - Guitar, Cello',
@@ -79,16 +42,15 @@ export const useArtistsStore = defineStore('artists', {
           'James Beasley - Drums',
         ],
         audioPath: 'miller-lane',
-      },
+      } as Artist,
     ],
     artist: undefined,
     loading: {},
     errors: {},
-    globalSelectedTrack: null, // New global selected track state
+    globalSelectedTrack: null,
   }),
 
   actions: {
-    // New action to set the global selected track
     setGlobalSelectedTrack(track: Track) {
       this.globalSelectedTrack = track
     },

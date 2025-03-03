@@ -12,15 +12,8 @@
 </template>
 
 <script lang="ts">
-import { Howl } from 'howler'
 import { defineComponent, ref, watch, type PropType } from 'vue'
-
-interface Track {
-  title: string
-  artist: string
-  howl: Howl | null
-  display: boolean
-}
+import type { Track } from '@/types'
 
 export default defineComponent({
   props: {

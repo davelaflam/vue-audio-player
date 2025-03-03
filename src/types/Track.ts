@@ -4,7 +4,7 @@ export interface Track {
   title: string
   artist: string
   howl: Howl | null
-  display: boolean
+  display?: boolean
   artWork?: string
   src?: string
 }

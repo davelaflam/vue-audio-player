@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
 import { useArtistsStore } from '@/stores/artists'
-import type { Track } from '@/components/player/types/Track'
+import type { Track } from '@/types'
 
 export default defineComponent({
   props: {
