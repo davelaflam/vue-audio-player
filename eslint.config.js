@@ -1,9 +1,9 @@
 const eslintConfig = async () => {
-  const eslintPluginVue = (await import('eslint-plugin-vue')).default;
-  const typescriptEslintPlugin = (await import('@typescript-eslint/eslint-plugin')).default;
-  const typescriptEslintParser = (await import('@typescript-eslint/parser')).default;
-  const eslintPluginPrettier = (await import('eslint-plugin-prettier')).default;
-  const eslintPluginJsdoc = (await import('eslint-plugin-jsdoc')).default; // Import eslint-plugin-jsdoc
+  const eslintPluginVue = (await import('eslint-plugin-vue')).default
+  const typescriptEslintPlugin = (await import('@typescript-eslint/eslint-plugin')).default
+  const typescriptEslintParser = (await import('@typescript-eslint/parser')).default
+  const eslintPluginPrettier = (await import('eslint-plugin-prettier')).default
+  const eslintPluginJsdoc = (await import('eslint-plugin-jsdoc')).default // Import eslint-plugin-jsdoc
 
   return [
     {
@@ -43,6 +43,8 @@ const eslintConfig = async () => {
             singleQuote: true,
           },
         ],
+        'object-curly-spacing': ['error', 'always'],
+        quotes: ['error', 'single'],
         '@typescript-eslint/no-explicit-any': 'warn',
         '@typescript-eslint/no-unused-vars': [
           'warn',
@@ -68,7 +70,7 @@ const eslintConfig = async () => {
         'jsdoc/require-returns-type': 'warn', // Require return types in JSDoc
       },
     },
-  ];
-};
+  ]
+}
 
-export default await eslintConfig();
+export default await eslintConfig()

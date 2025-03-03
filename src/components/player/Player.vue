@@ -36,14 +36,14 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, onMounted, type PropType } from 'vue'
 import { Howl } from 'howler'
-import { TrackInfo } from '@/components/player/types/Track'
-import type { Track } from '@/components/player/types/Track'
+
 import { useArtistsStore } from '@/stores/artists'
 
 import PlayerTitleBar from '@/components/player/PlayerTitleBar.vue'
 import PlayerInfoPanel from '@/components/player/PlayerInfoPanel.vue'
 import PlayerControlsBars from '@/components/player/PlayerControlsBars.vue'
 import PlayerPlaylistPanel from '@/components/player/PlayerPlaylistPanel.vue'
+import type { Track, TrackInfo } from '@/types'
 
 let globalActivePlayer: Howl | null = null
 
