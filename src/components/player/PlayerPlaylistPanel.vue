@@ -18,49 +18,29 @@
   </v-card>
 </template>
 
-<script lang="ts">
-import { defineComponent, type PropType } from 'vue'
+<script lang="ts" setup>
 import { useArtistsStore } from '@/stores/artists'
-import type { Track } from '@/types'
+import type { PlayerPlaylistPanelProps, Track } from '@/types'
 
-export default defineComponent({
-  props: {
-    playlist: {
-      type: Array as PropType<Track[]>,
-      required: true,
-    },
-    selectedTrack: {
-      type: Object as PropType<Track | null>,
-      default: null,
-    },
-  },
-  emits: ['selecttrack', 'playtrack'],
+// ✅ Use defineProps to automatically expose props in the template
+const props = defineProps<PlayerPlaylistPanelProps>()
 
-  setup(props, { emit }) {
-    const artistsStore = useArtistsStore()
+const artistsStore = useArtistsStore()
 
-    const selectTrack = (track: Track) => {
-      if (artistsStore.globalSelectedTrack !== track) {
-        artistsStore.setGlobalSelectedTrack(track)
-        emit('selecttrack', track)
-      }
-    }
+const selectTrack = (track: Track) => {
+  if (artistsStore.globalSelectedTrack !== track) {
+    artistsStore.setGlobalSelectedTrack(track)
+    props.selectTrack(track) // ✅ Call the function from props
+  }
+}
 
-    const formatTime = (seconds: number) => {
-      const minutes = Math.floor(seconds / 60)
-      const remainingSeconds = Math.floor(seconds % 60)
-        .toString()
-        .padStart(2, '0')
-      return `${minutes}:${remainingSeconds}`
-    }
-
-    return {
-      artistsStore,
-      selectTrack,
-      formatTime,
-    }
-  },
-})
+const formatTime = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, '0')
+  return `${minutes}:${remainingSeconds}`
+}
 </script>
 
 <style scoped lang="scss">
@@ -70,7 +50,7 @@ export default defineComponent({
 }
 
 .selected {
-  background-color: #30b2c5 !important;
+  background-color: #2196f3 !important;
 }
 
 .even {
