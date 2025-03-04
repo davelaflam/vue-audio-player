@@ -44,13 +44,6 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-.v-timeline {
-  align-content: center;
-  overflow: visible;
-  // position: absolute;
-  z-index: 1000;
-}
-
 @media (min-width: 441px) and (max-width: 490px) {
   .player {
     width: 360px;
@@ -60,10 +53,6 @@ onMounted(() => {
 @media (max-width: 400px) {
   .v-card {
     width: auto;
-  }
-
-  .player {
-    // width: 358px;
   }
 }
 </style>
@@ -82,6 +71,12 @@ onMounted(() => {
   .v-timeline-item__body .v-card {
     background: none;
     border-radius: 0 !important;
+  }
+
+  @media (max-width: 475px) {
+    .v-timeline-divider {
+      display: none;
+    }
   }
 
   @media (max-width: 440px) {
