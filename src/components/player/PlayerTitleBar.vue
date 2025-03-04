@@ -8,7 +8,7 @@
           <div class="d-flex flex-column text-left text-md-start">
             <div class="d-flex flex-row">
               <b class="album-artist">{{ albumArtist }}</b>
-              <span class="album-title"> <span v-if="albumTitle" class="ml-2 mr-1">-</span> {{ albumTitle }}</span>
+              <span class="album-title"> <span v-if="albumTitle" class="ml-2 mr-1">-</span> {{ albumTitle }} </span>
             </div>
 
             <ul class="band-members mt-1">
@@ -25,66 +25,10 @@
   </v-card>
 </template>
 
-<script lang="ts">
-import { defineComponent, type PropType } from 'vue'
-import type { Track } from '@/types'
+<script lang="ts" setup>
+import type { PlayerTitleBarProps } from '@/types'
 
-export default defineComponent({
-  props: {
-    playlist: {
-      type: Array as PropType<Track[]>,
-      required: true,
-    },
-    selectedTrack: {
-      type: Object as PropType<Track | null>,
-      default: null,
-    },
-    albumCoverPath: {
-      type: String,
-      required: true,
-    },
-    albumArtist: {
-      type: String,
-      required: true,
-    },
-    albumTitle: {
-      type: String,
-      required: true,
-    },
-    albumYear: {
-      type: String,
-      required: true,
-    },
-    bandMembers: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
-  },
-  emits: ['selecttrack', 'playtrack'],
-  setup(props, { emit }) {
-    const selectTrack = (track: Track) => {
-      emit('selecttrack', track)
-    }
-
-    const playTrack = (index: number) => {
-      emit('playtrack', index)
-    }
-
-    const formatTime = (seconds: number) => {
-      const minutes = Math.floor(seconds / 60)
-      const remainingSeconds = Math.floor(seconds % 60)
-        .toString()
-        .padStart(2, '0')
-      return `${minutes}:${remainingSeconds}`
-    }
-
-    return {
-      selectTrack,
-      playTrack,
-      formatTime,
-    }
-  },
-})
+defineProps<PlayerTitleBarProps>()
 </script>
 
 <style scoped lang="scss">

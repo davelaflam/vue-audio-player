@@ -9,13 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
-
-interface TrackInfo {
-  artist: string
-  title: string
-  seek: number
-  duration: number
-}
+import type { TrackInfo } from '@/types'
 
 export default defineComponent({
   props: {
