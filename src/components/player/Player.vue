@@ -44,7 +44,6 @@ import PlayerInfoPanel from '@/components/player/PlayerInfoPanel.vue'
 import PlayerControlsBars from '@/components/player/PlayerControlsBars.vue'
 import PlayerPlaylistPanel from '@/components/player/PlayerPlaylistPanel.vue'
 
-// ✅ Define props using PlayerProps
 const props = defineProps<PlayerProps>()
 
 const artistsStore = useArtistsStore()
@@ -191,7 +190,7 @@ const toggleLoop = (value: boolean) => {
   console.log('Toggle loop:', value)
   loop.value = value
   if (value) {
-    shuffle.value = false // ✅ Disable shuffle when enabling repeat
+    shuffle.value = false
   }
 }
 
@@ -199,19 +198,17 @@ const toggleShuffle = (value: boolean) => {
   console.log('Toggle shuffle:', value)
   shuffle.value = value
   if (value) {
-    loop.value = false // ✅ Disable repeat when enabling shuffle
-    stop() // ✅ Stop the current song immediately before shuffling
+    loop.value = false
+    stop()
     shuffleAndPlayNewTrack()
   }
 }
 
-// ✅ Helper function to shuffle and play a new song
 const shuffleAndPlayNewTrack = () => {
   if (!props.playlist.length) return
 
   let newIndex = Math.floor(Math.random() * props.playlist.length)
 
-  // Ensure a different track is selected
   while (newIndex === index.value) {
     newIndex = Math.floor(Math.random() * props.playlist.length)
   }
