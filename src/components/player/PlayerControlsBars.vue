@@ -53,7 +53,6 @@ import { ref, watch } from 'vue'
 import { Howler } from 'howler'
 import type { PlayerControlsBarsProps } from '@/types/Player'
 
-// ✅ Define props using PlayerControlsBarsProps
 const props = defineProps<PlayerControlsBarsProps>()
 
 const volume = ref(0.2)
@@ -72,7 +71,6 @@ const toggleMute = () => {
   Howler.mute(muted.value)
 }
 
-// ✅ Handles seek bar click to update the track position
 const handleSeek = (event: MouseEvent) => {
   const el = (event.target as HTMLElement).closest('.v-progress-linear') as HTMLElement
   if (el) {

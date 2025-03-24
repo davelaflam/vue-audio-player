@@ -22,7 +22,6 @@
 import { useArtistsStore } from '@/stores/artists'
 import type { PlayerPlaylistPanelProps, Track } from '@/types'
 
-// ✅ Use defineProps to automatically expose props in the template
 const props = defineProps<PlayerPlaylistPanelProps>()
 
 const artistsStore = useArtistsStore()

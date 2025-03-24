@@ -1,6 +1,6 @@
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import { mdi } from 'vuetify/iconsets/mdi' // Change here
+import { mdi } from 'vuetify/iconsets/mdi'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 

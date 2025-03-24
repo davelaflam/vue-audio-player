@@ -10,10 +10,8 @@ const isMobile = ref(false)
 const isMobileView = () => window.innerWidth <= 650 // Adjust the breakpoint as needed
 
 onMounted(() => {
-  // Check the initial screen size on component mount
   isMobile.value = isMobileView()
 
-  // Listen for window resize to update the view
   window.addEventListener('resize', () => {
     isMobile.value = isMobileView()
   })
